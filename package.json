@@ -1,0 +1,12 @@
+{
+  "description": "All files needed for unit testing",
+  "license": "GPL-3.0",
+  "repository": "https://github.com/woznyp/JavaScript-Benchmarks/tree/develop",
+  "dependencies": {
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13",
+    "karma-jasmine": "^0.1",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-junit-reporter": "^0.3.8"
+  }
+}
