@@ -52,6 +52,10 @@ function parseQueryParameters(queryParametersArray) {
     "use strict";
     var queryParameters = {};
 
+    if (!queryParametersArray.map) {
+        throw new Error('Given argument should be type of Array');
+    }
+
     queryParametersArray.map(function (el) {
         queryParameters[el.split('=')[0]] = el.split('=')[1];
     });
