@@ -1,5 +1,5 @@
 /*jslint browser:true*/
-/*global window */
+/*global window, Event, Ajax */
 
 /**
  * Created by Paweł Woźny
@@ -66,40 +66,6 @@ function parseQueryParameters(queryParametersArray) {
 }
 
 /**
- * Creates handler object for http requests
- * @class
- * @constructor
- * @returns {Ajax}
- */
-function Ajax() {
-    "use strict";
-    if (this === undefined) {
-        throw new Error('Use new with a constructor function');
-    }
-    this.request = new XMLHttpRequest();
-    /**
-     * Handles GET request
-     * @param {String} url
-     * @param {Function} callback
-     */
-    this.makeRequest = function (url, callback) {
-        this.request.open('GET', url, true);
-        this.request.responseType = 'json';
-        this.request.send();
-
-        var self = this;
-        this.request.onreadystatechange = function () {
-            if (self.request.readyState === 4 && self.request.status === 200) {
-                callback(self.request.response);
-            } else {
-                debug([self.request.readyState, self.request.status]);
-            }
-        };
-
-    };
-}
-
-/**
  * Imports script file with given name
  * @param {String} scriptFile - module name
  * @returns {undefined}
@@ -110,6 +76,11 @@ function importScript(scriptFile) {
 
     scriptElement.src = globals.config.paths[scriptFile];
     document.head.appendChild(scriptElement);
+    scriptElement.onload = function () {
+        var ev = new Event('on' + scriptFile.toUpperCase() + 'Loaded');
+        console.log(ev);
+        console.log(document.dispatchEvent(ev));
+    };
 }
 
 

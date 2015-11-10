@@ -7,7 +7,8 @@
             frameworks: ['jasmine'],
             files: [
                 'scripts/*.js',
-                'tests/**/*.js'
+                'scripts/**/*.js',
+                'tests/scripts/**/*.js'
             ],
             exclude: [],
             preprocessors: {},

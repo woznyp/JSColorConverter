@@ -1,4 +1,6 @@
 {
-    "version": 1.0,
-    "tools": "scripts/tools.js"
+  "version": 1.0,
+  "tools": "scripts/core/tools.js",
+  "canvas": "scripts/Canvas/Canvas.js",
+  "benchmark": "scripts/core/Benchmark.js"
 }
